@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DrinksCorner</string>
+    <string name="location_name">Dhaka,Bangladesh</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item_description">Its good with taste between cheese and coffee.</string>
+    <string name="cart">Cart Details</string>
+</resources>
