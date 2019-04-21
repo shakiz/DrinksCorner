@@ -25,7 +25,6 @@ public class CheeseFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,7 +34,7 @@ public class CheeseFragment extends Fragment {
 
         insertData();
 
-        recyclerViewAdapterCheese=new RecyclerViewAdapterCheese(cheeseCheeseItemList);
+        recyclerViewAdapterCheese=new RecyclerViewAdapterCheese(cheeseCheeseItemList,getContext());
         recyclerViewCheese.setLayoutManager(linearLayoutManager);
         recyclerViewCheese.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCheese.setAdapter(recyclerViewAdapterCheese);

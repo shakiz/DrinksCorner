@@ -33,7 +33,7 @@ public class CoffeeFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_coffee, container, false);
         init(view);
         insertData();
-        recyclerViewAdapterCoffee=new RecyclerViewAdapterCoffee(coffeeItemList);
+        recyclerViewAdapterCoffee=new RecyclerViewAdapterCoffee(coffeeItemList,getContext());
         recyclerViewCoffee.setLayoutManager(linearLayoutManager);
         recyclerViewCoffee.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCoffee.setAdapter(recyclerViewAdapterCoffee);

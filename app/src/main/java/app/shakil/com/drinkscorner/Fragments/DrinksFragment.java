@@ -32,7 +32,7 @@ public class DrinksFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_drinks, container, false);
         init(view);
         insertData();
-        recyclerViewAdapterDrinks=new RecyclerViewAdapterDrinks(drinksItemList);
+        recyclerViewAdapterDrinks=new RecyclerViewAdapterDrinks(drinksItemList,getContext());
         recyclerViewDrinks.setLayoutManager(linearLayoutManager);
         recyclerViewDrinks.setItemAnimator(new DefaultItemAnimator());
         recyclerViewDrinks.setAdapter(recyclerViewAdapterDrinks);
