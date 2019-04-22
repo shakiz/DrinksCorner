@@ -11,12 +11,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-import app.shakil.com.drinkscorner.Model.CheeseItem;
+
+import app.shakil.com.drinkscorner.Model.Item;
 import app.shakil.com.drinkscorner.R;
+import app.shakil.com.drinkscorner.SaveCartDetails;
 
 public class RecyclerViewAdapterCheese extends RecyclerView.Adapter<RecyclerViewAdapterCheese.MyViewHolder>{
-    private List<CheeseItem> cheeseList;
+    private List<Item> cheeseList;
     private Context context;
+    private SaveCartDetails saveCartDetails;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description, price,rating;
@@ -35,7 +38,7 @@ public class RecyclerViewAdapterCheese extends RecyclerView.Adapter<RecyclerView
     }
 
 
-    public RecyclerViewAdapterCheese(List<CheeseItem> cheeseList,Context context) {
+    public RecyclerViewAdapterCheese(List<Item> cheeseList,Context context) {
         this.cheeseList = cheeseList;
         this.context=context;
     }
@@ -49,7 +52,7 @@ public class RecyclerViewAdapterCheese extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        CheeseItem cheeseItem = cheeseList.get(position);
+        final Item cheeseItem = cheeseList.get(position);
         holder.imageView.setImageResource(cheeseItem.getImage());
         holder.title.setText(cheeseItem.getTitle());
         holder.description.setText(cheeseItem.getDescription());
@@ -58,6 +61,8 @@ public class RecyclerViewAdapterCheese extends RecyclerView.Adapter<RecyclerView
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveCartDetails=new SaveCartDetails(context);
+                saveCartDetails.addNewItem(cheeseItem);
                 Toast.makeText(context,"Added to cart",Toast.LENGTH_LONG).show();
             }
         });

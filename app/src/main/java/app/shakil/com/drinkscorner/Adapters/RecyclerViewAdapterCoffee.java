@@ -12,13 +12,14 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import app.shakil.com.drinkscorner.Model.CheeseItem;
-import app.shakil.com.drinkscorner.Model.CoffeeItem;
+import app.shakil.com.drinkscorner.Model.Item;
 import app.shakil.com.drinkscorner.R;
+import app.shakil.com.drinkscorner.SaveCartDetails;
 
 public class RecyclerViewAdapterCoffee extends RecyclerView.Adapter<RecyclerViewAdapterCoffee.MyViewHolder>{
-    private List<CoffeeItem> coffeeItems;
+    private List<Item> coffeeItems;
     private Context context;
+    private SaveCartDetails saveCartDetails;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description, price,rating;
@@ -37,7 +38,7 @@ public class RecyclerViewAdapterCoffee extends RecyclerView.Adapter<RecyclerView
     }
 
 
-    public RecyclerViewAdapterCoffee(List<CoffeeItem> coffeeItems,Context context) {
+    public RecyclerViewAdapterCoffee(List<Item> coffeeItems,Context context) {
         this.coffeeItems = coffeeItems;
         this.context=context;
     }
@@ -51,7 +52,7 @@ public class RecyclerViewAdapterCoffee extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        CoffeeItem coffeeItem = coffeeItems.get(position);
+        final Item coffeeItem = coffeeItems.get(position);
         holder.imageView.setImageResource(coffeeItem.getImage());
         holder.title.setText(coffeeItem.getTitle());
         holder.description.setText(coffeeItem.getDescription());
@@ -60,6 +61,8 @@ public class RecyclerViewAdapterCoffee extends RecyclerView.Adapter<RecyclerView
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveCartDetails=new SaveCartDetails(context);
+                saveCartDetails.addNewItem(coffeeItem);
                 Toast.makeText(context,"Added to cart",Toast.LENGTH_LONG).show();
             }
         });

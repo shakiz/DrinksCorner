@@ -5,6 +5,10 @@ public class Item {
     private double price,rating;
     private int image;
 
+    public Item(){
+
+    }
+
     public Item(int image, String title, String description, double price, double rating){
         this.image=image;
         this.title=title;
